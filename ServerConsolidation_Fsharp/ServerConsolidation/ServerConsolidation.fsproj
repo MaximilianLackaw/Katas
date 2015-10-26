@@ -53,6 +53,7 @@
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Measures.fs" />
     <Compile Include="Machine.fs" />
+    <Compile Include="ServerConsolidation.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
