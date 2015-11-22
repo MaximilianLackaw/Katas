@@ -1,0 +1,23 @@
+{
+  "name": "node_es6_template",
+  "version": "1.0.0",
+  "description": "A template for node es6 kata",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/jasmine-node/bin/jasmine-node src/ --autotest --color"
+  },
+  "keywords": [
+    "kata",
+    "jasmine",
+    "node",
+    "es6"
+  ],
+  "author": {
+    "name": "Maximilian Lackaw",
+    "email": "mlackaw@gmail.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "jasmine-node": "^1.14.5"
+  }
+}

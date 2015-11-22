@@ -5,6 +5,8 @@ node_modules/
 [bB]in/
 [oO]bj/
 packages/
+node_modules/
+.idea/
 
 __pycache__
 
