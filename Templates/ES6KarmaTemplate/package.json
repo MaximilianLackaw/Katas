@@ -1,0 +1,26 @@
+{
+  "name": "es6_karma_template",
+  "version": "1.0.0",
+  "description": "A template for es6 kata",
+  "main": "index.js",
+  "scripts": {
+  },
+  "keywords": [
+    "kata",
+    "jasmine",
+    "es6"
+  ],
+  "author": {
+    "name": "Maximilian Lackaw",
+    "email": "mlackaw@gmail.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.1.18",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.15",
+    "karma-babel-preprocessor": "^6.0.1",
+    "karma-chrome-launcher": "^0.2.1",
+    "karma-jasmine": "^0.3.6"
+  }
+}
