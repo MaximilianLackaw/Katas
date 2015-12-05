@@ -10,6 +10,9 @@ describe('NumberConverter', () => {
     converter = new NumberConverter();
   });
 
+  it('Should return null', () => {
+    expect(converter.convert(0)).toBe('null');
+  });
 
   it('Should return eins', () => {
     expect(converter.convert(1)).toBe('eins');
@@ -79,7 +82,19 @@ describe('NumberConverter', () => {
     expect(converter.convert(100)).toBe('einhundert');
   });
 
-  //it('Should return einhundertundzwei', () => {
-  //  expect(converter.convert(102)).toBe('einhundertundzwei');
-  //});
+  it('Should return einhundertzwei', () => {
+    expect(converter.convert(102)).toBe('einhundertzwei');
+  });
+
+  it('Should return einhundertzehn', () => {
+    expect(converter.convert(110)).toBe('einhundertzehn');
+  });
+
+  it('Should return einhundertelf', () => {
+    expect(converter.convert(111)).toBe('einhundertelf');
+  });
+
+  it('Should return einhundertneunundneunzig', () => {
+    expect(converter.convert(199)).toBe('einhundertneunundneunzig');
+  });
 });
