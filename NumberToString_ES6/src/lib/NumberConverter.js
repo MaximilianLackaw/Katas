@@ -1,18 +1,20 @@
 "use strict";
 
-let units = ['null', 'ein', 'zwei', 'drei', 'vier', 'fünf', 'sechs', 'sieben',
-  'acht', 'neun'];
-
-let tens = ['', 'zehn', 'zwanzig', 'dreissig', 'vierzig', 'fünfzig', 'sechzig', 'siebzig', 'achtzig', 'neunzig'];
-
-let elevenToNineteen = ['elf', 'zwölf', 'dreizehn', 'vierzehn', 'fünfzehn', 'sechzehn',
-  'siebzehn', 'achtzehn', 'neunzehn'];
-
 class NumberConverter {
+
+  constructor() {
+    this.units = ['null', 'ein', 'zwei', 'drei', 'vier', 'fünf', 'sechs', 'sieben',
+      'acht', 'neun'];
+
+    this.tens = ['', 'zehn', 'zwanzig', 'dreissig', 'vierzig', 'fünfzig', 'sechzig', 'siebzig', 'achtzig', 'neunzig'];
+
+    this.elevenToNineteen = ['elf', 'zwölf', 'dreizehn', 'vierzehn', 'fünfzehn', 'sechzehn',
+      'siebzehn', 'achtzehn', 'neunzehn'];
+  }
 
   convert(number) {
     if (number === 0) {
-      return units[0];
+      return this.units[0];
     }
 
     let ans = '';
@@ -28,7 +30,7 @@ class NumberConverter {
   threeDigits(number, last) {
     let ans = '';
     if (number >= 100) {
-      ans += units[Math.floor(number / 100)];
+      ans += this.units[Math.floor(number / 100)];
 
       ans += 'hundert';
     }
@@ -36,10 +38,10 @@ class NumberConverter {
     let numberRest = number % 100;
 
     if (numberRest > 10 && numberRest < 20) {
-      ans += elevenToNineteen[numberRest - 11];
+      ans += this.elevenToNineteen[numberRest - 11];
     } else {
       if (numberRest % 10 !== 0) {
-        ans += units[numberRest % 10];
+        ans += this.units[numberRest % 10];
 
         if (numberRest > 10) {
           ans += 'und';
@@ -48,7 +50,7 @@ class NumberConverter {
 
       if (numberRest >= 10) {
         let index = Math.floor(numberRest / 10);
-        ans += tens[index];
+        ans += this.tens[index];
       }
     }
 
