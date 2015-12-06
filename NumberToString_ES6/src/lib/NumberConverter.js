@@ -8,8 +8,6 @@ let tens = ['', 'zehn', 'zwanzig', 'dreissig', 'vierzig', 'fünfzig', 'sechzig',
 let elevenToNineteen = ['elf', 'zwölf', 'dreizehn', 'vierzehn', 'fünfzehn', 'sechzehn',
   'siebzehn', 'achtzehn', 'neunzehn'];
 
-
-
 class NumberConverter {
 
   convert(number) {
@@ -18,35 +16,49 @@ class NumberConverter {
     }
 
     let ans = '';
-    if (number >= 100) {
-      ans += 'einhundert';
+    if (number >= 1000) {
+      ans += this.threeDigits(Math.floor(number / 1000));
 
-      number -= 100;
+      ans += 'tausend';
     }
 
-    if (number > 10 && number < 20) {
-      ans += elevenToNineteen[number - 11];
-    } else {
-      if (number % 10 !== 0) {
-        ans += units[number % 10];
+    return ans + this.threeDigits(number % 1000, true);
+  }
 
-        if (number > 10) {
+  threeDigits(number, last) {
+    let ans = '';
+    if (number >= 100) {
+      ans += units[Math.floor(number / 100)];
+
+      ans += 'hundert';
+    }
+
+    let numberRest = number % 100;
+
+    if (numberRest > 10 && numberRest < 20) {
+      ans += elevenToNineteen[numberRest - 11];
+    } else {
+      if (numberRest % 10 !== 0) {
+        ans += units[numberRest % 10];
+
+        if (numberRest > 10) {
           ans += 'und';
         }
       }
 
-      if (number >= 10) {
-        let index = Math.floor(number / 10);
+      if (numberRest >= 10) {
+        let index = Math.floor(numberRest / 10);
         ans += tens[index];
       }
     }
 
-    if (number === 1){
+    if (!!last && numberRest === 1){
       ans += 's';
     }
 
     return ans;
   }
+
 }
 
 module.exports = NumberConverter;

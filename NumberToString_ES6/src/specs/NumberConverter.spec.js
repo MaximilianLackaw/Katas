@@ -97,4 +97,40 @@ describe('NumberConverter', () => {
   it('Should return einhundertneunundneunzig', () => {
     expect(converter.convert(199)).toBe('einhundertneunundneunzig');
   });
+
+  it('Should return zweihundert', () => {
+    expect(converter.convert(200)).toBe('zweihundert');
+  });
+
+  it('Should return neunhundertneunundneunzig', () => {
+    expect(converter.convert(999)).toBe('neunhundertneunundneunzig');
+  });
+
+  it('Should return eintausend', () => {
+    expect(converter.convert(1000)).toBe('eintausend');
+  });
+
+  it('Should return eintausendeins', () => {
+    expect(converter.convert(1001)).toBe('eintausendeins');
+  });
+
+  it('Should return eintausendvierhundertdreiundzwanzig', () => {
+    expect(converter.convert(1423)).toBe('eintausendvierhundertdreiundzwanzig');
+  });
+
+  it('Should return zweitausenddreihundert', () => {
+    expect(converter.convert(2300)).toBe('zweitausenddreihundert');
+  });
+
+  it('Should return neuntausendvierhundertneunzehn', () => {
+    expect(converter.convert(9419)).toBe('neuntausendvierhundertneunzehn');
+  });
+
+  it('Should return zehntausenddreihundert', () => {
+    expect(converter.convert(10300)).toBe('zehntausenddreihundert');
+  });
+
+  it('Should return neunhundertdreiundneunzigtausendvierhundertdreizehn', () => {
+    expect(converter.convert(993413)).toBe('neunhundertdreiundneunzigtausendvierhundertdreizehn');
+  });
 });
