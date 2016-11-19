@@ -1,0 +1,20 @@
+{
+  "name": "server-consolidation-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile": "node ./node_modules/typescript/bin/tsc",
+    "pretest": "npm run compile",
+    "test": "node ./node_modules/mocha/bin/_mocha ./dest/**/*.spec.js --colors"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chai": "^3.4.34",
+    "@types/mocha": "^2.2.33",
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2",
+    "typescript": "^2.0.10"
+  }
+}
