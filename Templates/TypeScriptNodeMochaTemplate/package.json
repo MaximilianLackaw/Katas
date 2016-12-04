@@ -1,7 +1,7 @@
 {
-  "name": "server-consolidation-typescript",
+  "name": "typescript-node-mocha-template",
   "version": "1.0.0",
-  "description": "The server consolidation Kata written in TypeScript",
+  "description": "A tempalte for a Kate with TypeScript, Node and mocha",
   "main": "src/serverConsolidation.ts",
   "scripts": {
     "clean": "rimraf ./dist",

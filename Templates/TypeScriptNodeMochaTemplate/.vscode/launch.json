@@ -1,0 +1,36 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Run mocha",
+            "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+            "cwd": "${workspaceRoot}",
+            "args": [
+                "./dest/**/*.spec.js",
+                "--colors"
+            ],
+            "runtimeExecutable": null,
+            "stopOnEntry": false,
+            "sourceMaps": true,
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "outDir": "${workspaceRoot}/dest",
+            "env": {
+                "NODE_ENV": "testing"
+            },
+            "preLaunchTask": "compile"
+        },
+        {
+         "name": "Attach",
+         "type": "node",
+         "request": "attach",
+         "port": 5858,
+         "sourceMaps": true,
+         "outDir": "${workspaceRoot}/dest",
+         "localRoot": "${workspaceRoot}"
+        }
+    ]
+}
