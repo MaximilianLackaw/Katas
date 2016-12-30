@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "baseUrl": "./src",
+    "outDir": "dist",
+    "sourceMap": true,
+    "declaration": false,
+    "alwaysStrict": true
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "typeroots": [
+    "node_modules/@types"
+  ]
+}
