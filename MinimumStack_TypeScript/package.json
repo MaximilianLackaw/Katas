@@ -1,0 +1,24 @@
+{
+  "name": "minimum-stack-typescript",
+  "version": "1.0.0",
+  "description": "See: https://leetcode.com/problems/min-stack/",
+  "main": "src/serverConsolidation.ts",
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "compile": "tsc",
+    "test": "_mocha ./src/**/*.spec.ts --compilers ts:ts-node/register,tsx:ts-node/register --colors",
+    "tdd": "_mocha ./src/**/*.spec.ts -w --compilers ts:ts-node/register,tsx:ts-node/register --colors"
+  },
+  "author": "Maximiian Lackaw",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chai": "^3.4.34",
+    "@types/mocha": "^2.2.33",
+    "@types/node": "0.0.2",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "rimraf": "^2.5.4",
+    "ts-node": "^2.0.0",
+    "typescript": "^2.1.4"
+  }
+}
