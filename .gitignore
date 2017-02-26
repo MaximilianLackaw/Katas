@@ -11,6 +11,5 @@ node_modules/
 __pycache__
 
 .vs/
-dest/
-
+dist/
 TestResult.xml
