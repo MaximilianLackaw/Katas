@@ -1,0 +1,25 @@
+{
+  "name": "typescript-node-mocha-template",
+  "version": "1.0.0",
+  "description": "A tempalte for a Kate with TypeScript, Node and mocha",
+  "main": "src/serverConsolidation.ts",
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "precompile": "npm run clean",
+    "compile": "tsc",
+    "test": "_mocha ./src/**/*.spec.ts --compilers ts:ts-node/register,tsx:ts-node/register --colors",
+    "tdd": "_mocha ./src/**/*.spec.ts -w --compilers ts:ts-node/register,tsx:ts-node/register --colors"
+  },
+  "author": "Maximiian Lackaws",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chai": "^3.4.34",
+    "@types/mocha": "^2.2.33",
+    "@types/node": "0.0.2",
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2",
+    "rimraf": "^2.5.4",
+    "ts-node": "^2.1.0",
+    "typescript": "^2.2.1"
+  }
+}
