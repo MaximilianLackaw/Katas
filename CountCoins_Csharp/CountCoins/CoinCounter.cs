@@ -10,6 +10,7 @@ namespace CountCoins
         {
             var coins = new []
             {
+               // new Coin {Name = "nickles", Value = 10},
                 new Coin {Name = "dimes", Value = 5},
                 new Coin {Name = "pennies", Value = 1}
             };
@@ -36,18 +37,20 @@ namespace CountCoins
 
             if (cents == 10)
             {
-                results.Add("A nickel");
+                results.Add("1 nickels");
             }
 
             if (cents > 10)
             {
-                results.Add($"A nickel and {cents - 10} pennies");
+                results.Add($"1 nickels and {cents - 10} pennies");
             }
 
             return results
+                .Select(x => Regex.Replace(x, @"\s1 nickels", " a nickel"))
+                .Select(x => Regex.Replace(x, @"^1 nickels", "A nickel"))
                 .Select(x => Regex.Replace(x, @"\s1 dimes", " a dime"))
-                .Select(x => Regex.Replace(x, @"\s1 pennies", " a penny"))
                 .Select(x => Regex.Replace(x, @"^1 dimes", "A dime"))
+                .Select(x => Regex.Replace(x, @"\s1 pennies", " a penny"))
                 .Select(x => Regex.Replace(x, @"^1 pennies", "A penny"))
                 .ToArray();
         }

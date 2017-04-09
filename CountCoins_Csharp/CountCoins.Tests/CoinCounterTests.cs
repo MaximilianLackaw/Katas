@@ -122,6 +122,7 @@ namespace CountCoins.Tests
         [InlineData("3 dimes and 8 pennies")]
         [InlineData("2 dimes and 13 pennies")]
         [InlineData("A dime and 18 pennies")]
+        [InlineData("A nickel and 13 pennies")]
         public void When_twentythree_cents_given_Should_contain_expectedResult(string expectedResult)
         {
             var result = this.coinsCounter.CalculateVariations(23);
