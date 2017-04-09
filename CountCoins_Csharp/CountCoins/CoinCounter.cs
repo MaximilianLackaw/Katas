@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -9,39 +8,40 @@ namespace CountCoins
     {
         public string[] CalculateVariations(int cents)
         {
+            var coins = new []
+            {
+                new Coin {Name = "dimes", Value = 5},
+                new Coin {Name = "pennies", Value = 1}
+            };
+
             var results = new List<string> { $"{cents} pennies" };
 
             string result;
-            if (cents >= 5)
+
+            for (int i = 0; i < coins.Length - 1; i++)
             {
-                result = "1 dimes";
-                if (cents > 5)
+                for (int j = cents / coins[i].Value; j > 0 ; j--)
                 {
-                    result += $" and {cents - 5} pennies";
-                }
+                    result = $"{j} {coins[i].Name}";
 
-                results.Add(result);
-
-                if (cents / 5 > 1)
-                {
-                    result = $"{cents / 5} dimes";
-                    if (cents % 5 != 0)
+                    if (cents - (j * coins[i].Value) > 0)
                     {
-                        result += $" and {cents % 5} pennies";
-                    }
+                        result += $" and {(cents - (j * coins[i].Value)) / coins[i + 1].Value} {coins[i + 1].Name}";
+                    } 
 
                     results.Add(result);
                 }
+                
             }
 
-            if (cents >= 10)
+            if (cents == 10)
             {
                 results.Add("A nickel");
+            }
 
-                if (cents > 10)
-                {
-                    results.Add($"A nickel and {cents - 10} pennies");
-                }
+            if (cents > 10)
+            {
+                results.Add($"A nickel and {cents - 10} pennies");
             }
 
             return results
@@ -50,6 +50,12 @@ namespace CountCoins
                 .Select(x => Regex.Replace(x, @"^1 dimes", "A dime"))
                 .Select(x => Regex.Replace(x, @"^1 pennies", "A penny"))
                 .ToArray();
+        }
+
+        private class Coin
+        {
+            public string Name { get; set; }
+            public int Value { get; set; }
         }
     }
 }

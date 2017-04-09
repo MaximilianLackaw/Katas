@@ -99,9 +99,34 @@ namespace CountCoins.Tests
         [Fact]
         public void When_eleven_cents_given_Should_return_array_with_four_elements()
         {
-            var result = this.coinsCounter.CalculateVariations(10);
+            var result = this.coinsCounter.CalculateVariations(11);
 
             result.Length.Should().Be(4);
+        }
+
+        [Theory]
+        [InlineData("15 pennies")]
+        [InlineData("A dime and 10 pennies")]
+        [InlineData("2 dimes and 5 pennies")]
+        [InlineData("3 dimes")]
+        public void When_fivteen_cents_given_Should_contain_expectedResult(string expectedResult)
+        {
+            var result = this.coinsCounter.CalculateVariations(15);
+
+            result.Should().Contain(expectedResult);
+        }
+
+        [Theory]
+        [InlineData("23 pennies")]
+        [InlineData("4 dimes and 3 pennies")]
+        [InlineData("3 dimes and 8 pennies")]
+        [InlineData("2 dimes and 13 pennies")]
+        [InlineData("A dime and 18 pennies")]
+        public void When_twentythree_cents_given_Should_contain_expectedResult(string expectedResult)
+        {
+            var result = this.coinsCounter.CalculateVariations(23);
+
+            result.Should().Contain(expectedResult);
         }
     }
 }
