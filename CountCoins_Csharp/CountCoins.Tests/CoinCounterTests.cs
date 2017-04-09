@@ -1,5 +1,4 @@
-using System;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Xunit;
 
 namespace CountCoins.Tests
@@ -22,11 +21,67 @@ namespace CountCoins.Tests
         }
 
         [Fact]
-        public void When_two_cent_given_Should_return_2_pennies()
+        public void When_two_cents_given_Should_return_2_pennies()
         {
             var result = this.coinsCounter.CalculateVariations(2);
 
             result.Should().BeEquivalentTo("2 pennies");
+        }
+
+        [Theory]
+        [InlineData("A dime")]
+        [InlineData("5 pennies")]
+        public void When_five_cents_given_Should_contain_expectedResult(string expectedResult)
+        {
+            var result = this.coinsCounter.CalculateVariations(5);
+
+            result.Should().Contain(expectedResult);
+        }
+
+        [Fact]
+        public void When_five_cents_given_Should_return_array_with_two_elements()
+        {
+            var result = this.coinsCounter.CalculateVariations(5);
+
+            result.Length.Should().Be(2);
+        }
+
+        [Theory]
+        [InlineData("6 pennies")]
+        [InlineData("A dime and a penny")]
+        public void When_six_cents_given_Should_contain_expectedResult(string expectedResult)
+        {
+            var result = this.coinsCounter.CalculateVariations(6);
+
+            result.Should().Contain(expectedResult);
+        }
+
+        [Fact]
+        public void When_six_cents_given_Should_return_array_with_two_elements()
+        {
+            var result = this.coinsCounter.CalculateVariations(6);
+
+            result.Length.Should().Be(2);
+        }
+
+        [Theory]
+        [InlineData("10 pennies")]
+        [InlineData("A dime and 5 pennies")]
+        [InlineData("2 dimes")]
+        [InlineData("A nickel")]
+        public void When_ten_cents_given_Should_contain_expectedResult(string expectedResult)
+        {
+            var result = this.coinsCounter.CalculateVariations(10);
+
+            result.Should().Contain(expectedResult);
+        }
+
+        [Fact]
+        public void When_ten_cents_given_Should_return_array_with_four_elements()
+        {
+            var result = this.coinsCounter.CalculateVariations(10);
+
+            result.Length.Should().Be(4);
         }
     }
 }
