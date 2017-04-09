@@ -83,5 +83,25 @@ namespace CountCoins.Tests
 
             result.Length.Should().Be(4);
         }
+
+        [Theory]
+        [InlineData("11 pennies")]
+        [InlineData("A dime and 6 pennies")]
+        [InlineData("2 dimes and a penny")]
+        [InlineData("A nickel and a penny")]
+        public void When_eleven_cents_given_Should_contain_expectedResult(string expectedResult)
+        {
+            var result = this.coinsCounter.CalculateVariations(11);
+
+            result.Should().Contain(expectedResult);
+        }
+
+        [Fact]
+        public void When_eleven_cents_given_Should_return_array_with_four_elements()
+        {
+            var result = this.coinsCounter.CalculateVariations(10);
+
+            result.Length.Should().Be(4);
+        }
     }
 }
