@@ -129,5 +129,17 @@ namespace CountCoins.Tests
 
             result.Should().Contain(expectedResult);
         }
+
+        [Theory]
+        [InlineData("A quarter and 5 pennies")]
+        [InlineData("A quarter and a dime")]
+        [InlineData("3 nickels")]
+        [InlineData("A nickel and 20 pennies")]
+        public void When_thirty_cents_given_Should_contain_expectedResult(string expectedResult)
+        {
+            var result = this.coinsCounter.CalculateVariations(30);
+
+            result.Should().Contain(expectedResult);
+        }
     }
 }

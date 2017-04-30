@@ -6,53 +6,64 @@ namespace CountCoins
 {
     public class CoinCounter : ICoinCounter
     {
-        public string[] CalculateVariations(int cents)
+        private readonly Coin[] coins;
+
+        public CoinCounter()
         {
-            var coins = new []
+            this.coins = new[]
             {
-               // new Coin {Name = "nickles", Value = 10},
+                new Coin {Name = "quarters", Value = 25},
+                new Coin {Name = "nickels", Value = 10},
                 new Coin {Name = "dimes", Value = 5},
                 new Coin {Name = "pennies", Value = 1}
             };
+        }
 
-            var results = new List<string> { $"{cents} pennies" };
-
-            string result;
-
-            for (int i = 0; i < coins.Length - 1; i++)
-            {
-                for (int j = cents / coins[i].Value; j > 0 ; j--)
-                {
-                    result = $"{j} {coins[i].Name}";
-
-                    if (cents - (j * coins[i].Value) > 0)
-                    {
-                        result += $" and {(cents - (j * coins[i].Value)) / coins[i + 1].Value} {coins[i + 1].Name}";
-                    } 
-
-                    results.Add(result);
-                }
-                
-            }
-
-            if (cents == 10)
-            {
-                results.Add("1 nickels");
-            }
-
-            if (cents > 10)
-            {
-                results.Add($"1 nickels and {cents - 10} pennies");
-            }
-
-            return results
-                .Select(x => Regex.Replace(x, @"\s1 nickels", " a nickel"))
-                .Select(x => Regex.Replace(x, @"^1 nickels", "A nickel"))
-                .Select(x => Regex.Replace(x, @"\s1 dimes", " a dime"))
-                .Select(x => Regex.Replace(x, @"^1 dimes", "A dime"))
-                .Select(x => Regex.Replace(x, @"\s1 pennies", " a penny"))
-                .Select(x => Regex.Replace(x, @"^1 pennies", "A penny"))
+        public string[] CalculateVariations(int cents)
+        {
+            return GetCoins(cents, 0)
+                .Select(x => Regex.Replace(x, @"^ and ", string.Empty))
+                .Select(x => x.Replace("a quarters", "a quarter"))
+                .Select(x => x.Replace("a nickels", "a nickel"))
+                .Select(x => x.Replace("a dimes", "a dime"))
+                .Select(x => x.Replace("a pennies", "a penny"))
+                .Select(x => Regex.Replace(x, @"^a", "A"))
                 .ToArray();
+        }
+
+        private IEnumerable<string> GetCoins(int cents, int index)
+        {
+            if (cents == 0)
+            {
+                yield return string.Empty;
+                yield break;
+            }
+
+            if (coins[index].Value == 1)
+            {
+                yield return $" and {FormatQuantity(cents)} {coins[index].Name}";
+                yield break;
+            }
+
+            for (int j = cents / coins[index].Value; j > 0; j--)
+            {
+                var currentCoinString = $" and {FormatQuantity(j)} {coins[index].Name}";
+                
+                foreach (string restCoinsString in GetCoins(cents - j * coins[index].Value, index + 1))
+                {
+                    yield return currentCoinString + restCoinsString;
+                }
+            }
+
+            foreach (string restCoinsString in GetCoins(cents, index + 1))
+            {
+                yield return restCoinsString;
+            }
+        }
+
+        private string FormatQuantity(int quantity)
+        {
+            return quantity == 1 ? "a" : $"{quantity}";
         }
 
         private class Coin
