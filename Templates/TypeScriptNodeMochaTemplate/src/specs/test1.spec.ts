@@ -3,7 +3,6 @@ import {Test1} from '../test1';
 
 const expect = chai.expect;
 
-
 describe('Class Test1:', () => {
   describe('When calculating 2 + 2', () => {
     let result: number;
