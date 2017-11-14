@@ -23,6 +23,10 @@
             "taskName": "compile",
             "args": ["run", "compile"],
             "showOutput": "never"
+        },
+        {
+          "taskName": "lint",
+          "args": ["run", "lint"]
         }
     ]
 }

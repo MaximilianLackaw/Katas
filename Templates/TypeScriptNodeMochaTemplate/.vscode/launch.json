@@ -8,7 +8,7 @@
             "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
             "cwd": "${workspaceRoot}",
             "args": [
-                "./dest/**/*.spec.js",
+                "./dist/**/*.spec.js",
                 "--colors"
             ],
             "runtimeExecutable": null,
@@ -17,7 +17,6 @@
             "runtimeArgs": [
                 "--nolazy"
             ],
-            "outDir": "${workspaceRoot}/dest",
             "env": {
                 "NODE_ENV": "testing"
             },
@@ -29,7 +28,7 @@
          "request": "attach",
          "port": 5858,
          "sourceMaps": true,
-         "outDir": "${workspaceRoot}/dest",
+         "outFiles": ["${workspaceRoot}/dist/**/*.ts"],
          "localRoot": "${workspaceRoot}"
         }
     ]
