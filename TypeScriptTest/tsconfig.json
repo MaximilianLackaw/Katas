@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "baseUrl": "./src",
+    "outDir": "dist",
+    "sourceMap": true,
+    "declaration": false,
+    "types": [ "node", "mocha", "chai" ]
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
