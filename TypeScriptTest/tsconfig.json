@@ -6,6 +6,11 @@
     "outDir": "dist",
     "sourceMap": true,
     "declaration": false,
+    "noImplicitAny": true,
+    "noImplicitReturns": false,
+    "removeComments": true,
+    "strictNullChecks": true,
+    "skipLibCheck": true,
     "types": [ "node", "mocha", "chai" ]
   },
   "exclude": [
