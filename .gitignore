@@ -1,6 +1,7 @@
 
 node_modules/
 .tmp/
+*.js.map
 
 [bB]in/
 [oO]bj/
@@ -13,3 +14,4 @@ __pycache__
 .vs/
 dist/
 TestResult.xml
+yarn-error.log

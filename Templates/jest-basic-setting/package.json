@@ -1,0 +1,27 @@
+{
+  "name": "jest-basic-setting",
+  "version": "0.1.0",
+  "description": "Basic setting for Jest JS/TS workspace",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watchAll --config jest.config.js"
+  },
+  "keywords": [
+    "Jest",
+    "Javascript",
+    "TypeScript",
+    "TDD"
+  ],
+  "author": "Maximilian Lackaw <mlackaw@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^22.2.2",
+    "babel-jest": "^22.4.3",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "eslint": "^4.19.1",
+    "jest": "^22.4.3",
+    "ts-jest": "^22.4.2",
+    "typescript": "^2.8.1"
+  }
+}
