@@ -8,6 +8,7 @@ node_modules/
 packages/
 node_modules/
 .idea/
+.vscode/
 
 __pycache__
 
@@ -15,3 +16,4 @@ __pycache__
 dist/
 TestResult.xml
 yarn-error.log
+yarn.lock
